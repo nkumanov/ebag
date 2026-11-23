@@ -1,5 +1,5 @@
 {
-  "name": "@finances/auth",
+  "name": "@ebag/auth",
   "version": "1.0.0",
   "description": "",
   "main": "./src/index.ts",
@@ -7,8 +7,8 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
-    "@finances/core": "1.0.0",
-    "@finances/ui": "1.0.0"
+    "@ebag/core": "1.0.0",
+    "@ebag/ui": "1.0.0"
   },
   "peerDependencies": {
     "react-native": "0.88.1"

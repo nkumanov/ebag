@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "finances",
-    "slug": "finances",
+    "name": "ebag",
+    "slug": "ebag",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

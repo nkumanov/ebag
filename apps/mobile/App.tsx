@@ -1,6 +1,6 @@
-import { changeUserDetails, LoginScreen } from "@finances/auth";
-import { store, useAppDispatch } from "@finances/core";
-import { ThemeProvider } from "@finances/ui";
+import { changeUserDetails, LoginScreen } from "@ebag/auth";
+import { store, useAppDispatch } from "@ebag/core";
+import { ThemeProvider } from "@ebag/ui";
 import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
 import { StyleSheet, Text } from "react-native";

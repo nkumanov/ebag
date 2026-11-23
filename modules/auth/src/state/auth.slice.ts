@@ -1,4 +1,4 @@
-import { createSlice, rootReducer, RootState, WithSlice } from "@finances/core";
+import { createSlice, rootReducer, RootState, WithSlice } from "@ebag/core";
 
 type InitialState = {
   userDetails: {

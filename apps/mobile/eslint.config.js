@@ -14,8 +14,8 @@ module.exports = defineConfig([
         {
           patterns: [
             {
-              regex: "^@finances/[^/]+/",
-              message: "Import from the public @finances/<module> entry point.",
+              regex: "^@ebag/[^/]+/",
+              message: "Import from the public @ebag/<module> entry point.",
             },
           ],
         },

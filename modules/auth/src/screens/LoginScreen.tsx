@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import { selectName } from "../state/auth.slice";
-import { useAppSelector } from "@finances/core";
-import { ColorsType, useTheme } from "@finances/ui";
+import { useAppSelector } from "@ebag/core";
+import { ColorsType, useTheme } from "@ebag/ui";
 
 const LoginScreen = () => {
   const userData = useAppSelector(selectName);
