@@ -1,22 +1,17 @@
 {
   "name": "finances",
   "version": "1.0.0",
-  "main": "index.ts",
-  "dependencies": {
-    "expo": "~58.0.26",
-    "expo-status-bar": "~58.0.5",
-    "react": "19.3.0",
-    "react-native": "0.88.1"
-  },
-  "devDependencies": {
-    "@types/react": "~19.3.0",
-    "typescript": "~6.0.3"
-  },
+  "workspaces": [
+    "apps/*",
+    "modules/*"
+  ],
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web"
+    "start": "npm run start --workspace @finances/mobile --",
+    "android": "npm run android --workspace @finances/mobile --",
+    "ios": "npm run ios --workspace @finances/mobile --",
+    "web": "npm run web --workspace @finances/mobile --",
+    "lint": "npm run lint --workspace @finances/mobile --",
+    "typecheck": "npm run typecheck --workspace @finances/mobile --"
   },
   "private": true
 }
