@@ -1,3 +1,10 @@
+const promoColors = {
+  orchid: "#7E22CE",
+  cherry: "#BE123C",
+  emerald: "#047857",
+  sunflower: "#A16207",
+} as const;
+
 export const lightColors = {
   surface: {
     primary: "#FFFFFF",
@@ -23,6 +30,7 @@ export const lightColors = {
     subtle: "#DBEAFE",
     onPrimary: "#FFFFFF",
   },
+  promo: promoColors,
   status: {
     success: { foreground: "#166534", background: "#DCFCE7" },
     warning: { foreground: "#92400E", background: "#FEF3C7" },
@@ -60,6 +68,7 @@ export const darkColors = {
     subtle: "#172554",
     onPrimary: "#0F172A",
   },
+  promo: promoColors,
   status: {
     success: { foreground: "#86EFAC", background: "#14532D" },
     warning: { foreground: "#FCD34D", background: "#451A03" },

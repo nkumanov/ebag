@@ -7,8 +7,8 @@ import {
   useNavigationContainerRef,
 } from "@ebag/core";
 import { ThemeProvider } from "@ebag/ui";
-import { StyleSheet } from "react-native";
-import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import { StyleSheet, View } from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 import { Provider } from "react-redux";
 import {
   AccountNavigator,
@@ -17,7 +17,6 @@ import {
   OrdersNavigator,
 } from "./src/navigation/stackNavigators";
 import { hideTabBarOnSpecificScreens } from "./src/navigation/utils";
-import { useRef } from "react";
 
 const initialScreenByTab: Record<string, string> = {
   CategoriesTab: "Categories",
@@ -42,7 +41,7 @@ export default function App() {
     <SafeAreaProvider>
       <Provider store={store}>
         <ThemeProvider>
-          <SafeAreaView style={styles.container}>
+          <View style={styles.container}>
             <NavigationContainer
               onStateChange={onStateChange}
               ref={navigationRef}
@@ -104,7 +103,7 @@ export default function App() {
                 />
               </TabNavigator.Navigator>
             </NavigationContainer>
-          </SafeAreaView>
+          </View>
         </ThemeProvider>
       </Provider>
     </SafeAreaProvider>

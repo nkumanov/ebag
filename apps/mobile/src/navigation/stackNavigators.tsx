@@ -10,7 +10,6 @@ export function CategoriesNavigator() {
       initialRouteName="Categories"
       screenOptions={({ route }) => ({
         headerShown: route.name !== "Categories",
-        animation: "none",
       })}
     >
       {categoryRoutes.map(({ name, component }) => (

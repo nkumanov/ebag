@@ -8,6 +8,7 @@
   "type": "module",
   "dependencies": {
     "@ebag/core": "1.0.0",
+    "@ebag/products": "1.0.0",
     "@ebag/ui": "1.0.0"
   },
   "peerDependencies": {
