@@ -1,13 +1,13 @@
-import { useTheme } from "@ebag/ui";
-import { Text, View } from "react-native";
+import { PageWrapper, useTheme } from "@ebag/ui";
+import { Text } from "react-native";
 
 const OrderReviewScreen = () => {
   const { colors } = useTheme();
 
   return (
-    <View style={{ backgroundColor: colors.surface.primary }}>
+    <PageWrapper>
       <Text style={{ color: colors.text.primary }}>Review your order</Text>
-    </View>
+    </PageWrapper>
   );
 };
 

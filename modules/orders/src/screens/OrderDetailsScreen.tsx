@@ -1,13 +1,13 @@
 import { type NavigationProp, type ParamListBase, useNavigation } from "@ebag/core";
-import { useTheme } from "@ebag/ui";
-import { Button, Text, View } from "react-native";
+import { PageWrapper, useTheme } from "@ebag/ui";
+import { Button, Text } from "react-native";
 
 const OrderDetailsScreen = () => {
   const navigation = useNavigation<NavigationProp<ParamListBase>>();
   const { colors } = useTheme();
 
   return (
-    <View style={{ backgroundColor: colors.surface.primary }}>
+    <PageWrapper>
       <Text style={{ color: colors.text.primary }}>Order details</Text>
       <Button
         title="Track this order"
@@ -17,7 +17,7 @@ const OrderDetailsScreen = () => {
         title="Back to orders"
         onPress={() => navigation.navigate("OrdersScreen", undefined, { pop: true })}
       />
-    </View>
+    </PageWrapper>
   );
 };
 

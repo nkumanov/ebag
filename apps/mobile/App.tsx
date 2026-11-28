@@ -1,12 +1,13 @@
 import {
+  DarkTheme,
+  DefaultTheme,
   NavigationContainer,
-  NavigationState,
   ParamListBase,
   store,
   TabNavigator,
   useNavigationContainerRef,
 } from "@ebag/core";
-import { ThemeProvider } from "@ebag/ui";
+import { ThemeProvider, useTheme } from "@ebag/ui";
 import { StyleSheet, View } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { Provider } from "react-redux";
@@ -25,7 +26,21 @@ const initialScreenByTab: Record<string, string> = {
   AccountTab: "AccountScreen",
 };
 
-export default function App() {
+function AppNavigation() {
+  const { colors, theme } = useTheme();
+  const baseTheme = theme === "dark" ? DarkTheme : DefaultTheme;
+  const navigationTheme = {
+    ...baseTheme,
+    colors: {
+      ...baseTheme.colors,
+      // background: colors.surface.primary,
+      card: colors.surface.primary,
+      text: colors.text.primary,
+      primary: colors.accent.primary,
+      border: colors.border.subtle,
+      header: 'pink'
+    },
+  };
   const navigationRef = useNavigationContainerRef<ParamListBase>();
 
   const onStateChange = () => {
@@ -38,72 +53,79 @@ export default function App() {
     }
   };
   return (
+    <View style={[styles.container]}>
+      <NavigationContainer
+        onStateChange={onStateChange}
+        ref={navigationRef}
+        theme={navigationTheme}
+      >
+        <TabNavigator.Navigator
+          screenOptions={({ route }) => ({
+            tabBarStyle: {
+              display: hideTabBarOnSpecificScreens(
+                route,
+                initialScreenByTab[route.name],
+              ),
+            },
+            tabBarVisibilityAnimationEnabled: false,
+          })}
+        >
+          <TabNavigator.Screen
+            name="CategoriesTab"
+            component={CategoriesNavigator}
+            options={{
+              title: "Categories",
+              tabBarIcon: {
+                type: "image",
+                source: require("./assets/icons/categories.png"),
+              },
+            }}
+          />
+          <TabNavigator.Screen
+            name="OrdersTab"
+            component={OrdersNavigator}
+            options={{
+              title: "Orders",
+              tabBarIcon: {
+                type: "image",
+                source: require("./assets/icons/orders.png"),
+              },
+            }}
+          />
+          <TabNavigator.Screen
+            name="CartTab"
+            component={CartNavigator}
+            options={{
+              title: "Cart",
+              tabBarIcon: {
+                type: "image",
+                source: require("./assets/icons/cart.png"),
+              },
+            }}
+          />
+          <TabNavigator.Screen
+            name="AccountTab"
+            component={AccountNavigator}
+            options={{
+              title: "Account",
+              tabBarIcon: {
+                type: "image",
+                source: require("./assets/icons/account.png"),
+              },
+            }}
+          />
+        </TabNavigator.Navigator>
+      </NavigationContainer>
+    </View>
+  );
+}
+
+export default function App() {
+  return (
     <SafeAreaProvider>
       <Provider store={store}>
         <ThemeProvider>
-          <View style={styles.container}>
-            <NavigationContainer
-              onStateChange={onStateChange}
-              ref={navigationRef}
-            >
-              <TabNavigator.Navigator
-                screenOptions={({ route }) => ({
-                  tabBarStyle: {
-                    display: hideTabBarOnSpecificScreens(
-                      route,
-                      initialScreenByTab[route.name],
-                    ),
-                  },
-                  tabBarVisibilityAnimationEnabled: false,
-                })}
-              >
-                <TabNavigator.Screen
-                  name="CategoriesTab"
-                  component={CategoriesNavigator}
-                  options={{
-                    title: "Categories",
-                    tabBarIcon: {
-                      type: "image",
-                      source: require("./assets/icons/categories.png"),
-                    },
-                  }}
-                />
-                <TabNavigator.Screen
-                  name="OrdersTab"
-                  component={OrdersNavigator}
-                  options={{
-                    title: "Orders",
-                    tabBarIcon: {
-                      type: "image",
-                      source: require("./assets/icons/orders.png"),
-                    },
-                  }}
-                />
-                <TabNavigator.Screen
-                  name="CartTab"
-                  component={CartNavigator}
-                  options={{
-                    title: "Cart",
-                    tabBarIcon: {
-                      type: "image",
-                      source: require("./assets/icons/cart.png"),
-                    },
-                  }}
-                />
-                <TabNavigator.Screen
-                  name="AccountTab"
-                  component={AccountNavigator}
-                  options={{
-                    title: "Account",
-                    tabBarIcon: {
-                      type: "image",
-                      source: require("./assets/icons/account.png"),
-                    },
-                  }}
-                />
-              </TabNavigator.Navigator>
-            </NavigationContainer>
-          </View>
+          <AppNavigation />
         </ThemeProvider>
       </Provider>
     </SafeAreaProvider>
@@ -113,6 +135,5 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
   },
 });

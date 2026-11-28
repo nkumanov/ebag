@@ -5,8 +5,8 @@ import {
   useNavigation,
   useRoute,
 } from "@ebag/core";
-import { useTheme } from "@ebag/ui";
-import { Button, Text, View } from "react-native";
+import { PageWrapper, useTheme } from "@ebag/ui";
+import { Button, Text } from "react-native";
 type RootParams = {
   [Name in keyof AppRootParams]: AppRootParams[Name];
 };
@@ -16,7 +16,7 @@ const CategoryDetailsScreen = () => {
   const { colors } = useTheme();
 
   return (
-    <View style={{ backgroundColor: colors.surface.primary }}>
+    <PageWrapper>
       <Text style={{ color: colors.text.primary }}>Category details</Text>
       <Text style={{ color: colors.text.primary }}>{userId}</Text>
       <Button
@@ -25,7 +25,7 @@ const CategoryDetailsScreen = () => {
           navigate.navigate("Categories", undefined, { pop: true })
         }
       />
-    </View>
+    </PageWrapper>
   );
 };
 

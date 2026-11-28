@@ -6,10 +6,7 @@ const CategoriesScreen = () => {
   const { navigation } = useNavigate();
 
   return (
-    <PageWrapper
-      withScroll
-      safeAreaViewProps={{ edges: ["left", "right", "top"] }}
-    >
+    <PageWrapper>
       <Text style={{ color: "white" }}>Categories</Text>
 
       <Button

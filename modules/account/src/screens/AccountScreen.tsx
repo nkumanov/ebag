@@ -1,13 +1,13 @@
 import { type NavigationProp, type ParamListBase, useNavigation } from "@ebag/core";
-import { useTheme } from "@ebag/ui";
-import { Button, Text, View } from "react-native";
+import { PageWrapper, useTheme } from "@ebag/ui";
+import { Button, Text } from "react-native";
 
 const AccountScreen = () => {
   const navigation = useNavigation<NavigationProp<ParamListBase>>();
   const { colors } = useTheme();
 
   return (
-    <View style={{ backgroundColor: colors.surface.primary }}>
+    <PageWrapper>
       <Text style={{ color: colors.text.primary }}>My account</Text>
       <Button
         title="Profile"
@@ -17,7 +17,7 @@ const AccountScreen = () => {
         title="Saved addresses"
         onPress={() => navigation.navigate("Addresses")}
       />
-    </View>
+    </PageWrapper>
   );
 };
 

@@ -23,7 +23,9 @@ export function CartNavigator() {
   return (
     <MainStack.Navigator
       initialRouteName="CartScreen"
-      screenOptions={({ route }) => ({ animation: "none" })}
+      screenOptions={({ route }) => ({
+        headerShown: route.name !== "CartScreen",
+      })}
     >
       {cartRoutes.map(({ name, component }) => (
         <MainStack.Screen key={name} name={name} component={component} />
@@ -36,7 +38,9 @@ export function AccountNavigator() {
   return (
     <MainStack.Navigator
       initialRouteName="AccountScreen"
-      screenOptions={({ route }) => ({ animation: "none" })}
+      screenOptions={({ route }) => ({
+        headerShown: route.name !== "AccountScreen",
+      })}
     >
       {accountRoutes.map(({ name, component }) => (
         <MainStack.Screen key={name} name={name} component={component} />
@@ -49,7 +53,9 @@ export function OrdersNavigator() {
   return (
     <MainStack.Navigator
       initialRouteName="OrdersScreen"
-      screenOptions={({ route }) => ({ animation: "none" })}
+      screenOptions={({ route }) => ({
+        headerShown: route.name !== "OrdersScreen",
+      })}
     >
       {orderRoutes.map(({ name, component }) => (
         <MainStack.Screen key={name} name={name} component={component} />
